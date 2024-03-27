@@ -5,3 +5,20 @@
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+<!-- Button to generate the current date -->
+<button @onclick="ShowCurrentDate">Show Date</button>
+
+<!-- Display the date here -->
+<p>@currentDate</p>
+
+@code {
+    // Variable to store the current date
+    private string currentDate = string.Empty;
+
+    // Method to update the currentDate variable
+    private void ShowCurrentDate()
+    {
+        currentDate = DateTime.Now.ToString("dddd, MMMM dd yyyy");
+    }
+}
