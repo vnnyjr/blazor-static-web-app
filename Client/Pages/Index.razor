@@ -5,7 +5,6 @@
 <h1>Hello, world!</h1>
 
 
-// Date time button
 <div>
     <button @onclick="ShowCurrentDate">Show Date Time</button>
     <span style="margin-left: 10px;">@currentDate</span>
@@ -23,9 +22,8 @@
 </div>
 
 
-// Example Radzen button
-<div>
-    <RadzenButton Text="Radzen Button" Click="@OnButtonClick" Style="margin:20px;"/>
+
+<RadzenButton Text="Radzen Button" Click="@OnButtonClick" Style="margin:20px;"/>
 
     @code {
         void OnButtonClick()
@@ -33,4 +31,3 @@
             Console.WriteLine("Radzen Button Clicked!");
         }
     }
-</div>
