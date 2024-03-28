@@ -13,14 +13,16 @@
 
 
 
+// Region - Scripts
+    
+    // Show Date time
+    @code {
+        // Variable to store the current date
+        private string currentDate = string.Empty;
 
-@code {
-    // Variable to store the current date
-    private string currentDate = string.Empty;
-
-    // Method to update the currentDate variable
-    private void ShowCurrentDate()
-    {
-        currentDate = DateTime.Now.ToString("ddMMMMyyyy - HH:mm:ss");
+        // Method to update the currentDate variable
+        private void ShowCurrentDate()
+        {
+            currentDate = DateTime.Now.ToString("ddMMMMyyyy - HH:mm:ss");
+        }
     }
-}
