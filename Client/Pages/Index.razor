@@ -4,25 +4,33 @@
 
 <h1>Hello, world!</h1>
 
+
+// Date time button
 <div>
     <button @onclick="ShowCurrentDate">Show Date Time</button>
     <span style="margin-left: 10px;">@currentDate</span>
+
+        @code {
+            // Variable to store the current date
+            private string currentDate = string.Empty;
+
+            // Method to update the currentDate variable
+            private void ShowCurrentDate()
+            {
+                currentDate = DateTime.Now.ToString("ddMMMMyyyy - HH:mm:ss");
+            }
+        }
 </div>
 
 
+// Example Radzen button
+<div>
+    <RadzenButton Text="Radzen Button" Click="@OnButtonClick" Style="margin:20px;"/>
 
-
-
-// Region - Scripts
-    
-    // Show Date time
     @code {
-        // Variable to store the current date
-        private string currentDate = string.Empty;
-
-        // Method to update the currentDate variable
-        private void ShowCurrentDate()
+        void OnButtonClick()
         {
-            currentDate = DateTime.Now.ToString("ddMMMMyyyy - HH:mm:ss");
+            Console.WriteLine("Radzen Button Clicked!");
         }
     }
+</div>
