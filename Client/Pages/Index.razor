@@ -16,9 +16,10 @@
     <span style="margin-left: 10px;">@radzenButtonOutput @RadzenCurrentDate</span>
 </div>
 
-<h3>Radzen Data Grid</h3>
+<h3>Radzen Data Grid - Features: sortable, pagesize=5, Export to csv</h3>
 <RadzenDataGrid Data="@products" TItem="Product" Count="@products.Count"
-                PageSize="5" AllowPaging="true" AllowSorting="true">
+                PageSize="5" AllowPaging="true" AllowSorting="true"
+                Resizable="true" Export="true" IsLoading="true"  >
     <Columns>
         <RadzenDataGridColumn TItem="Product" Property="Id" Title="ID" Width="100px" />
         <RadzenDataGridColumn TItem="Product" Property="Name" Title="Name" />
@@ -27,6 +28,10 @@
 </RadzenDataGrid>
 
 
+
+
+
+<!-- button code -->
 @code {
     // Variable to store the current date
     private string currentDate = string.Empty;
@@ -55,6 +60,8 @@
     
 }
 
+
+<!-- Data Table  code -->
 @code {
     // Initialize a list of products to display in the RadzenDataGrid
     List<Product> products = new List<Product>
@@ -62,6 +69,15 @@
         new Product { Id = 1, Name = "Laptop", Price = 999.99M },
         new Product { Id = 2, Name = "Smartphone", Price = 699.99M },
         new Product { Id = 3, Name = "Tablet", Price = 399.99M },
-        // Add more products as needed...
+        new Product { Id = 4, Name = "Monitor", Price = 299.99M },
+        new Product { Id = 5, Name = "Keyboard", Price = 49.99M },
+        new Product { Id = 6, Name = "Mouse", Price = 25.99M },
+        new Product { Id = 7, Name = "Webcam", Price = 89.99M },
+        new Product { Id = 8, Name = "Headphones", Price = 59.99M },
+        new Product { Id = 9, Name = "External Hard Drive", Price = 129.99M },
+        new Product { Id = 10, Name = "USB Flash Drive", Price = 19.99M },
+        new Product { Id = 11, Name = "Printer", Price = 149.99M },
+        new Product { Id = 12, Name = "Desk Lamp", Price = 39.99M },
+        new Product { Id = 13, Name = "Chair", Price = 199.99M },
     };
 }
