@@ -16,6 +16,15 @@
     <span style="margin-left: 10px;">@radzenButtonOutput @RadzenCurrentDate</span>
 </div>
 
+<RadzenDataGrid Data="@products" TItem="Product" Count="@products.Count"
+                PageSize="5" AllowPaging="true" AllowSorting="true">
+    <Columns>
+        <RadzenDataGridColumn TItem="Product" Property="Id" Title="ID" Width="100px" />
+        <RadzenDataGridColumn TItem="Product" Property="Name" Title="Name" />
+        <RadzenDataGridColumn TItem="Product" Property="Price" Title="Price" FormatString="{0:C}" />
+    </Columns>
+</RadzenDataGrid>
+
 
 @code {
     // Variable to store the current date
@@ -42,4 +51,16 @@
         radzenButtonOutput = "Radzen Button Clicked!";
         RadzenCurrentDate = DateTime.Now.ToString("dd MMMM yyyy - HH:mm:ss");
     }
+    
+}
+
+@code {
+    // Initialize a list of products to display in the RadzenDataGrid
+    List<Product> products = new List<Product>
+    {
+        new Product { Id = 1, Name = "Laptop", Price = 999.99M },
+        new Product { Id = 2, Name = "Smartphone", Price = 699.99M },
+        new Product { Id = 3, Name = "Tablet", Price = 399.99M },
+        // Add more products as needed...
+    };
 }
