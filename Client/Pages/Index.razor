@@ -17,13 +17,15 @@
 </div>
 
 
-
 @code {
     // Variable to store the current date
     private string currentDate = string.Empty;
 
     // Variable to store the Radzen button text
     private string radzenButtonText = "Click the button";
+
+    // Variable to store the Radzen button output
+    private string radzenButtonOutput = string.Empty;
 
     // Method to update the currentDate variable
     private void ShowCurrentDate()
@@ -32,7 +34,7 @@
     }
 
     // Method to handle the Radzen button click
-    void RadzenButtonClick()
+    private void RadzenButtonClick()
     {
         radzenButtonOutput = "Radzen Button Clicked!";
     }
