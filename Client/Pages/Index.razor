@@ -13,7 +13,7 @@
 <!-- Radzen button and its output -->
 <div style="display: flex; align-items: center;">
     <RadzenButton Text="Radzen Button" Click="@RadzenButtonClick"/>
-    <span style="margin-left: 10px;">@radzenButtonOutput @currentDate</span>
+    <span style="margin-left: 10px;">@radzenButtonOutput @RadzenCurrentDate</span>
 </div>
 
 
@@ -37,6 +37,6 @@
     private void RadzenButtonClick()
     {
         radzenButtonOutput = "Radzen Button Clicked!";
-        currentDate = DateTime.Now.ToString("dd MMMM yyyy - HH:mm:ss");
+        RadzenCurrentDate = DateTime.Now.ToString("dd MMMM yyyy - HH:mm:ss");
     }
 }
