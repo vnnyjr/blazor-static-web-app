@@ -17,7 +17,7 @@
 </div>
 
 <!-- Radzen Data Grid and its Title -->
-<h3 style="margin-top: 50px;">Radzen Data Grid, includes sort, pagesize, Filter, Export</h3>
+<h3 style="margin-top: 50px;">Radzen Data Grid, includes sort, pagesize, Filter</h3>
 
 <RadzenDataGrid @ref="grid" Data="@products" TItem="Product" Count="@products.Count"
                 PageSize="5" AllowPaging="true" AllowSorting="true"
@@ -31,8 +31,6 @@
 
 <RadzenButton Text="Export" Click="@ExportGrid" />
 
-
-
 <!-- button code -->
 @code {
     // Variable to store the current date
@@ -40,9 +38,6 @@
 
     // Variable to store the current date
     private string RadzenCurrentDate = string.Empty;
-
-    // Variable to store the Radzen button text
-    private string radzenButtonText = "Click the button";
 
     // Variable to store the Radzen button output
     private string radzenButtonOutput = string.Empty;
@@ -61,7 +56,7 @@
     }
     
     // Export Data table code
-    RadzenDataGrid<Product> grid;
+    private RadzenDataGrid<Product>? grid;
 
     private void ExportGrid()
     {
