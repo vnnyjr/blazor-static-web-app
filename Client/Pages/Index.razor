@@ -16,10 +16,10 @@
     <span style="margin-left: 10px;">@radzenButtonOutput @RadzenCurrentDate</span>
 </div>
 
-<h3>Radzen Data Grid - Features: sortable, pagesize=5, Export to csv</h3>
+<h3>Radzen Data Grid, includes features like sort, pagesize=5, Export to csv</h3>
 <RadzenDataGrid Data="@products" TItem="Product" Count="@products.Count"
                 PageSize="5" AllowPaging="true" AllowSorting="true"
-                Resizable="true" Export="true" IsLoading="true"  >
+                Resizable="true" Export="true" >
     <Columns>
         <RadzenDataGridColumn TItem="Product" Property="Id" Title="ID" Width="100px" />
         <RadzenDataGridColumn TItem="Product" Property="Name" Title="Name" />
@@ -61,7 +61,7 @@
 }
 
 
-<!-- Data Table  code -->
+<!-- Data Table code -->
 @code {
     // Initialize a list of products to display in the RadzenDataGrid
     List<Product> products = new List<Product>
