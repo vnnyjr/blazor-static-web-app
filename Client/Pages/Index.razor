@@ -21,8 +21,7 @@
 <RadzenDataGrid Data="@products" TItem="Product" Count="@products.Count"
                 PageSize="5" AllowPaging="true" AllowSorting="true"
                 AllowColumnResize="true" Export="true" AllowColumnPicking="true"
-                ShowPagingSummary="true" AllowFiltering="true" FilterMode="FilterMode.Advanced"
-                LogicalFilterOperator="LogicalFilterOperator.Or">
+                ShowPagingSummary="true" AllowFiltering="true" >
     <Columns>
         <RadzenDataGridColumn TItem="Product" Property="Id" Title="ID" Width="100px" />
         <RadzenDataGridColumn TItem="Product" Property="Name" Title="Name" />
