@@ -16,8 +16,10 @@
     <span style="margin-left: 10px;">@radzenButtonOutput @RadzenCurrentDate</span>
 </div>
 
-<h3>Radzen Data Grid, includes features like sort, pagesize=5, Export to csv</h3>
-<RadzenDataGrid Data="@products" TItem="Product" Count="@products.Count"
+<!-- Radzen Data Grid and its Title -->
+<h3 style="margin-top: 50px;">Radzen Data Grid, includes sort, pagesize, Filter, Export</h3>
+
+<RadzenDataGrid @ref="grid" Data="@products" TItem="Product" Count="@products.Count"
                 PageSize="5" AllowPaging="true" AllowSorting="true"
                 Resizable="true" Export="true" >
     <Columns>
@@ -27,7 +29,7 @@
     </Columns>
 </RadzenDataGrid>
 
-
+<RadzenButton Text="Export" Click="@ExportGrid" />
 
 
 
@@ -58,6 +60,14 @@
         RadzenCurrentDate = DateTime.Now.ToString("dd MMMM yyyy - HH:mm:ss");
     }
     
+    // Export Data table code
+    RadzenDataGrid<Product> grid;
+
+    private void ExportGrid()
+    {
+        grid.Export("Products.csv");
+    }
+
 }
 
 
