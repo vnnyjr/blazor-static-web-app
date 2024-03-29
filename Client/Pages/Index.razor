@@ -20,7 +20,9 @@
 <h3 style="margin-top: 50px;">Radzen Data Grid, includes sort, pagesize, Filter</h3>
 <RadzenDataGrid Data="@products" TItem="Product" Count="@products.Count"
                 PageSize="5" AllowPaging="true" AllowSorting="true"
-                Resizable="true" Export="true" AllowColumnPicking="true">
+                AllowColumnResize="true" Export="true" AllowColumnPicking="true"
+                ShowPagingSummary="true" AllowFiltering="true" FilterMode="FilterMode.Advanced"
+                LogicalFilterOperator="LogicalFilterOperator.Or">
     <Columns>
         <RadzenDataGridColumn TItem="Product" Property="Id" Title="ID" Width="100px" />
         <RadzenDataGridColumn TItem="Product" Property="Name" Title="Name" />
