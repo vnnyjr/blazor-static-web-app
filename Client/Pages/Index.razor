@@ -18,10 +18,9 @@
 
 <!-- Radzen Data Grid and its Title -->
 <h3 style="margin-top: 50px;">Radzen Data Grid, includes sort, pagesize, Filter</h3>
-
 <RadzenDataGrid @ref="grid" Data="@products" TItem="Product" Count="@products.Count"
                 PageSize="5" AllowPaging="true" AllowSorting="true"
-                Resizable="true" Export="true" >
+                Resizable="true" Export="true" AllowColumnPicking="true">
     <Columns>
         <RadzenDataGridColumn TItem="Product" Property="Id" Title="ID" Width="100px" />
         <RadzenDataGridColumn TItem="Product" Property="Name" Title="Name" />
@@ -29,7 +28,7 @@
     </Columns>
 </RadzenDataGrid>
 
-<RadzenButton Text="Export" Click="@ExportGrid" />
+
 
 <!-- button code -->
 @code {
@@ -55,14 +54,6 @@
         RadzenCurrentDate = DateTime.Now.ToString("dd MMMM yyyy - HH:mm:ss");
     }
     
-    // Export Data table code
-    private RadzenDataGrid<Product>? grid;
-
-    private void ExportGrid()
-    {
-        grid.Export("Products.csv");
-    }
-
 }
 
 
