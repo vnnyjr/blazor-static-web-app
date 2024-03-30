@@ -10,7 +10,7 @@
 <!-- Search input and button -->
 <div>
     <input type="text" @bind="searchTerm" placeholder="Enter search term..." />
-    <RadzenButton Text="Search YouTube" Click="@(() => SearchVideos())"/>
+    <button @onclick="SearchVideos">Search</button>
 </div>
 
 <h3>Video List</h3>
