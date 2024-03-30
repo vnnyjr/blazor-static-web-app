@@ -19,10 +19,10 @@
 
 <!-- Radzen Data Grid and its Title -->
 <h3 style="margin-top: 50px;">Youtube Videos!</h3>
-<RadzenDataGrid Data="@videos" TItem="Videos" Count="@videos.Count"
-                PageSize="5" AllowPaging="true" AllowSorting="true"
-                AllowColumnResize="true" Export="true" AllowColumnPicking="true"
-                ShowPagingSummary="true" AllowFiltering="true" >
+<RadzenDataGrid Style="width: 800px; height: 600px;"
+                Data="@videos" TItem="Videos" Count="@videos.Count" PageSize="25"
+                AllowPaging="true" AllowSorting="true" AllowColumnResize="true" 
+                AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" >
     <Columns>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" />
         <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" />
