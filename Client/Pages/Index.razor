@@ -1,6 +1,7 @@
 ﻿@page "/"
 @inject HttpClient Http
 
+
 <PageTitle>Index</PageTitle>
 
 <h1>Fuck you, world!</h1>
@@ -24,7 +25,11 @@
         <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" Width="100px" />
         <RadzenDataGridColumn TItem="Videos" Property="Published" Title="Published" Width="100px" />
         <RadzenDataGridColumn TItem="Videos" Property="Duration" Title="Duration" Width="100px" />
-        <RadzenDataGridColumn TItem="Videos" Property="Url" Title="Url" Width="224px" />
+        <RadzenDataGridColumn TItem="Videos" Property="Url" Title="URL" Width="224px">
+            <Template Context="video">
+                <a href="@video.Url" target="_blank">@video.Url</a>
+            </Template>
+        </RadzenDataGridColumn>
     </Columns>
 </RadzenDataGrid>
 
