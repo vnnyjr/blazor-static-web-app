@@ -13,20 +13,18 @@
     <button @onclick="SearchVideos">Search</button>
 </div>
 
-<h3>Video List</h3>
 
 <!-- Radzen Data Grid and its Title -->
-<h3 style="margin-top: 50px;">Youtube Videos!</h3>
 <RadzenDataGrid Style="width: 1024px; height: 600px;"
                 Data="@videos" TItem="Videos" Count="@videos.Count" PageSize="25"
                 AllowPaging="true" AllowSorting="true" AllowColumnResize="true" 
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" >
     <Columns>
-        <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" />
-        <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" />
-        <RadzenDataGridColumn TItem="Videos" Property="Published" Title="Published" />
-        <RadzenDataGridColumn TItem="Videos" Property="Duration" Title="Duration" />
-        <RadzenDataGridColumn TItem="Videos" Property="Url" Title="Url" />
+        <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
+        <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" Width="100px" />
+        <RadzenDataGridColumn TItem="Videos" Property="Published" Title="Published" Width="100px" />
+        <RadzenDataGridColumn TItem="Videos" Property="Duration" Title="Duration" Width="100px" />
+        <RadzenDataGridColumn TItem="Videos" Property="Url" Title="Url" Width="224px" />
     </Columns>
 </RadzenDataGrid>
 
