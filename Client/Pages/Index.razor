@@ -10,7 +10,7 @@
 <!-- Search input and button -->
 <div>
     <input type="text" @bind="searchTerm" placeholder="Enter search term..." />
-    <RadzenButton Text="Search Youtube" Click="@SearchVideos"/>
+    <RadzenButton Text="Search YouTube" Click="@(() => SearchVideos())"/>
 </div>
 
 <h3>Video List</h3>
@@ -29,34 +29,6 @@
         <RadzenDataGridColumn TItem="Videos" Property="Url" Title="Url" />
     </Columns>
 </RadzenDataGrid>
-
-
-
-<!-- button code -->
-@code {
-    // Variable to store the current date
-    private string currentDate = string.Empty;
-
-    // Variable to store the current date
-    private string RadzenCurrentDate = string.Empty;
-
-    // Variable to store the Radzen button output
-    private string radzenButtonOutput = string.Empty;
-
-    // Method to update the currentDate variable
-    private void ShowCurrentDate()
-    {
-        currentDate = DateTime.Now.ToString("dd MMMM yyyy - HH:mm:ss");
-    }
-
-    // Method to handle the Radzen button click
-    private void RadzenButtonClick()
-    {
-        radzenButtonOutput = "Radzen Button Clicked!";
-        RadzenCurrentDate = DateTime.Now.ToString("dd MMMM yyyy - HH:mm:ss");
-    }
-    
-}
 
 
 <!-- Radzen Button to fill the Data Grid code -->
