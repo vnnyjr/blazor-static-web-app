@@ -34,7 +34,7 @@
 <!-- Radzen Button to fill the Data Grid code -->
 @code {
     private string? searchTerm;
-    private List<Videos>? videos;
+    private List<Videos> videos = new List<Videos>();
 
     private async Task SearchVideos()
     {
@@ -42,7 +42,12 @@
         if (response.IsSuccessStatusCode)
         {
             var jsonString = await response.Content.ReadAsStringAsync();
-            videos = System.Text.Json.JsonSerializer.Deserialize<List<Videos>>(jsonString);
+            var result = System.Text.Json.JsonSerializer.Deserialize<List<Videos>>(jsonString);
+            videos = result ?? new List<Videos>(); // In case result is null, assign an empty list
+        }
+        else
+        {
+            videos = new List<Videos>(); // Clear the list or handle the error as needed
         }
     }
 }
