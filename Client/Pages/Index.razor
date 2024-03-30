@@ -1,8 +1,9 @@
 ﻿@page "/"
+@inject HttpClient Http
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Fuck you, world!</h1>
 
 <!-- Button and date output -->
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
@@ -17,15 +18,17 @@
 </div>
 
 <!-- Radzen Data Grid and its Title -->
-<h3 style="margin-top: 50px;">Radzen Data Grid, includes sort, pagesize, Filter etc. a fully realized Dashboard using it here https://blazor.radzen.com/dashboard</h3>
-<RadzenDataGrid Data="@products" TItem="Product" Count="@products.Count"
+<h3 style="margin-top: 50px;">Youtube Videos!</h3>
+<RadzenDataGrid Data="@videos" TItem="Videos" Count="@videos.Count"
                 PageSize="5" AllowPaging="true" AllowSorting="true"
                 AllowColumnResize="true" Export="true" AllowColumnPicking="true"
                 ShowPagingSummary="true" AllowFiltering="true" >
     <Columns>
-        <RadzenDataGridColumn TItem="Product" Property="Id" Title="ID" Width="100px" />
-        <RadzenDataGridColumn TItem="Product" Property="Name" Title="Name" Width="100px"/>
-        <RadzenDataGridColumn TItem="Product" Property="Price" Title="Price" FormatString="{0:C}" Width="100px" />
+        <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" />
+        <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" />
+        <RadzenDataGridColumn TItem="Videos" Property="Published" Title="Published" />
+        <RadzenDataGridColumn TItem="Videos" Property="Duration" Title="Duration" />
+        <RadzenDataGridColumn TItem="Videos" Property="Url" Title="Url" />
     </Columns>
 </RadzenDataGrid>
 
@@ -58,23 +61,17 @@
 }
 
 
-<!-- Data Table code -->
+<!-- Radze Data Grid code -->
 @code {
-    // Initialize a list of products to display in the RadzenDataGrid
-    List<Product> products = new List<Product>
+    private List<Videos>? videos;
+
+    protected override async Task OnInitializedAsync()
     {
-        new Product { Id = 1, Name = "Laptop", Price = 999.99M },
-        new Product { Id = 2, Name = "Smartphone", Price = 699.99M },
-        new Product { Id = 3, Name = "Tablet", Price = 399.99M },
-        new Product { Id = 4, Name = "Monitor", Price = 299.99M },
-        new Product { Id = 5, Name = "Keyboard", Price = 49.99M },
-        new Product { Id = 6, Name = "Mouse", Price = 25.99M },
-        new Product { Id = 7, Name = "Webcam", Price = 89.99M },
-        new Product { Id = 8, Name = "Headphones", Price = 59.99M },
-        new Product { Id = 9, Name = "External Hard Drive", Price = 129.99M },
-        new Product { Id = 10, Name = "USB Flash Drive", Price = 19.99M },
-        new Product { Id = 11, Name = "Printer", Price = 149.99M },
-        new Product { Id = 12, Name = "Desk Lamp", Price = 39.99M },
-        new Product { Id = 13, Name = "Chair", Price = 199.99M },
-    };
+        var response = await Http.GetAsync("https://func-app-powershell001.azurewebsites.net/api/HttpTrigger3?searchterm=chomsky");
+        if (response.IsSuccessStatusCode)
+        {
+            var jsonString = await response.Content.ReadAsStringAsync();
+            videos = System.Text.Json.JsonSerializer.Deserialize<List<Videos>>(jsonString);
+        }
+    }
 }
