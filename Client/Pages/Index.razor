@@ -12,7 +12,7 @@
     <button @onclick="SearchVideos">Search</button>
 </div>
 
-<RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+<RadzenButton Text="Reset" Click="@Reset" Style="margin-top: 20px; margin-bottom: 5px;" />
 <!-- Radzen Data Grid and its Title -->
 <RadzenDataGrid Style="width: 1200px; height: 700px;"
                 Data="@videos" TItem="Videos" Count="@videos.Count" PageSize="10"
@@ -58,7 +58,9 @@
 
     private async Task Reset()
     {
+        isLoading = true;
         grid.Reset(true); 
         await grid.FirstPage(true);
+        isLoading = false;
     }
 }
