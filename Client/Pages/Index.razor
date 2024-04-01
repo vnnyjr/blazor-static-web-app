@@ -18,7 +18,7 @@
                 Data="@videos" TItem="Videos" Count="@videos.Count" PageSize="10"
                 AllowPaging="true" AllowSorting="true" AllowColumnResize="true" 
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
-                IsLoading=@isLoading @ref="grid">
+                IsLoading=@isLoading @ref="grid" RowSelect="OnRowSelect">
     <Columns>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
         <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" Width="100px" />
@@ -32,6 +32,21 @@
     </Columns>
 </RadzenDataGrid>
 
+<!-- Button to display the selected video details -->
+<button @onclick="ShowSelectedVideoDetails">Show Details</button>
+
+<!-- This section will display the details of the selected video -->
+@if (selectedVideo != null)
+{
+    <div>
+        <h3>Selected Video Details</h3>
+        <p>Title: @selectedVideo.Title</p>
+        <p>Channel: @selectedVideo.Channel</p>
+        <p>Channel: @selectedVideo.Published</p>
+        <p>Channel: @selectedVideo.Duration</p>
+        <p>Channel: @selectedVideo.Url</p>
+    </div>
+}
 
 <!-- Radzen Button to fill the Data Grid code -->
 @code {
@@ -63,4 +78,19 @@
         await grid.FirstPage(true);
         isLoading = false;
     }
+
+    void OnRowSelect(Videos video)
+    {
+        selectedVideo = video;
+    }
+
+    // This method is triggered when the "Show Details" button is clicked.
+    void ShowSelectedVideoDetails()
+    {
+        // You can add code here if you want to do something when the button is clicked,
+        // but simply assigning the selected video to 'selectedVideo' is enough to display its details.
+        // The UI will update automatically because of Blazor's reactive nature.
+    }
+
+
 }
