@@ -1,8 +1,7 @@
 ﻿@page "/"
 @inject HttpClient Http
-
-
 <PageTitle>Index</PageTitle>
+
 
 <h3>Search YouTube Videos</h3>
 
@@ -18,7 +17,7 @@
                 Data="@videos" TItem="Videos" Count="@videos.Count" PageSize="10"
                 AllowPaging="true" AllowSorting="true" AllowColumnResize="true" 
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
-                IsLoading=@isLoading @ref="grid" RowSelect="OnRowSelect">
+                IsLoading=@isLoading @ref="grid" RowSelect="@(args => OnRowSelect(args))">
     <Columns>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
         <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" Width="100px" />
@@ -54,6 +53,9 @@
     private string? searchTerm;
     private List<Videos> videos = new List<Videos>();
     private bool isLoading = false;
+    private Videos? selectedVideo;
+
+    // This method is triggered when Search button
     private async Task SearchVideos()
     {
         isLoading = true;
@@ -71,6 +73,7 @@
         isLoading = false;
     }
 
+    // This method is triggered when pressing the reset button
     private async Task Reset()
     {
         isLoading = true;
@@ -79,18 +82,17 @@
         isLoading = false;
     }
 
-    void OnRowSelect(Videos video)
+    // This method is triggered when a row is selected from the grid
+    private void OnRowSelect(Videos video)
     {
         selectedVideo = video;
     }
 
     // This method is triggered when the "Show Details" button is clicked.
-    void ShowSelectedVideoDetails()
+    private void ShowSelectedVideoDetails()
     {
         // You can add code here if you want to do something when the button is clicked,
         // but simply assigning the selected video to 'selectedVideo' is enough to display its details.
         // The UI will update automatically because of Blazor's reactive nature.
     }
-
-
 }
