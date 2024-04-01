@@ -13,7 +13,7 @@
 
 <RadzenButton Text="Reset" Click="@Reset" Style="margin-top: 20px; margin-bottom: 5px;" />
 <!-- Radzen Data Grid and its Title -->
-<RadzenDataGrid Style="width: 1200px; height: 700px;"
+<RadzenDataGrid Style="width: 1200px; height: 400px;"
                 Data="@videos" TItem="Videos" Count="@videos.Count" PageSize="10"
                 AllowPaging="true" AllowSorting="true" AllowColumnResize="true" 
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
@@ -31,19 +31,16 @@
     </Columns>
 </RadzenDataGrid>
 
-<!-- Button to display the selected video details -->
-<button @onclick="ShowSelectedVideoDetails">Show Details</button>
-
 <!-- This section will display the details of the selected video -->
 @if (selectedVideo != null)
 {
     <div>
         <h3>Selected Video Details</h3>
-        <p>Title: @selectedVideo.Title</p>
-        <p>Channel: @selectedVideo.Channel</p>
-        <p>Channel: @selectedVideo.Published</p>
-        <p>Channel: @selectedVideo.Duration</p>
-        <p>Channel: @selectedVideo.Url</p>
+        Title: @selectedVideo.Title<br/>
+        Channel: @selectedVideo.Channel<br/>
+        Published: @selectedVideo.Published<br/>
+        Duration: @selectedVideo.Duration<br/>
+        Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a>
     </div>
 }
 
@@ -88,11 +85,4 @@
         selectedVideo = video;
     }
 
-    // This method is triggered when the "Show Details" button is clicked.
-    private void ShowSelectedVideoDetails()
-    {
-        // You can add code here if you want to do something when the button is clicked,
-        // but simply assigning the selected video to 'selectedVideo' is enough to display its details.
-        // The UI will update automatically because of Blazor's reactive nature.
-    }
 }
