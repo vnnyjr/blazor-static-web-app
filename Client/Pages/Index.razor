@@ -4,8 +4,6 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Fuck you, world!</h1>
-
 <h3>Search YouTube Videos</h3>
 
 <!-- Search input and button -->
@@ -14,13 +12,13 @@
     <button @onclick="SearchVideos">Search</button>
 </div>
 
-
+<RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
 <!-- Radzen Data Grid and its Title -->
-<RadzenDataGrid Style="width: 1024px; height: 600px;"
+<RadzenDataGrid Style="width: 1200px; height: 700px;"
                 Data="@videos" TItem="Videos" Count="@videos.Count" PageSize="10"
                 AllowPaging="true" AllowSorting="true" AllowColumnResize="true" 
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
-                IsLoading=@isLoading >
+                IsLoading=@isLoading @ref="grid">
     <Columns>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
         <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" Width="100px" />
@@ -37,6 +35,7 @@
 
 <!-- Radzen Button to fill the Data Grid code -->
 @code {
+    private RadzenDataGrid<Videos>? grid;
     private string? searchTerm;
     private List<Videos> videos = new List<Videos>();
     private bool isLoading = false;
@@ -55,5 +54,11 @@
             videos = new List<Videos>(); // Clear the list or handle the error as needed
         }
         isLoading = false;
+    }
+
+    private async Task Reset()
+    {
+        grid.Reset(true); 
+        await grid.FirstPage(true);
     }
 }
