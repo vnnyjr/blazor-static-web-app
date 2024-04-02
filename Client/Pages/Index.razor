@@ -9,15 +9,18 @@
 <div>
     <input type="text" @bind="searchTerm" placeholder="Enter search term..." />
     <button @onclick="SearchVideos">Search</button>
+    <RadzenButton Text="Search" Click="@SearchVideos" />
 </div>
 
-<RadzenButton Text="Reset" Click="@Reset" Style="margin-top: 20px; margin-bottom: 5px;" />
+<!-- Buttons to manipulate the grid -->
+<RadzenButton Text="Reset" Click="@Reset" Style="margin-top: 20px; margin-bottom: 5px;" /><RadzenButton Text="Clear Selection" Click="@ClearSelection" Style="margin-top: 20px; margin-bottom: 5px;"/>
+
 <!-- Radzen Data Grid and its Title -->
 <RadzenDataGrid Style="width: 1200px; height: 400px;"
                 Data="@videos" TItem="Videos" Count="@videos.Count" PageSize="10"
                 AllowPaging="true" AllowSorting="true" AllowColumnResize="true" 
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
-                IsLoading=@isLoading @ref="grid" RowSelect="@(args => OnRowSelect(args))">
+                IsLoading=@isLoading @ref="grid" RowSelect="@(args => OnRowSelect(args))" >
     <Columns>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
         <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" Width="100px" />
@@ -52,7 +55,7 @@
     private bool isLoading = false;
     private Videos? selectedVideo;
     private Videos? previouslySelectedVideo = null;
-
+    
     // This method is triggered when Search button
     private async Task SearchVideos()
     {
@@ -96,6 +99,12 @@
             selectedVideo = video;
             previouslySelectedVideo = video;
         }
+    }
+
+    private void ClearSelection()
+    {
+        selectedVideo = null;
+        previouslySelectedVideo = null;
     }
 
 }
