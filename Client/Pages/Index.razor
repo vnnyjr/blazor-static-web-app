@@ -51,11 +51,13 @@
     private List<Videos> videos = new List<Videos>();
     private bool isLoading = false;
     private Videos? selectedVideo;
+    private Videos? previouslySelectedVideo = null;
 
     // This method is triggered when Search button
     private async Task SearchVideos()
     {
         isLoading = true;
+        selectedVideo = null; // Clear the selected video
         var response = await Http.GetAsync($"https://func-app-powershell001.azurewebsites.net/api/HttpTrigger3?searchterm={searchTerm}");
         if (response.IsSuccessStatusCode)
         {
@@ -82,7 +84,18 @@
     // This method is triggered when a row is selected from the grid
     private void OnRowSelect(Videos video)
     {
-        selectedVideo = video;
+        if (previouslySelectedVideo == video)
+        {
+            // Deselect
+            selectedVideo = null;
+            previouslySelectedVideo = null;
+        }
+        else
+        {
+            // Select new
+            selectedVideo = video;
+            previouslySelectedVideo = video;
+        }
     }
 
 }
