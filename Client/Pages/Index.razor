@@ -21,6 +21,11 @@
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
                 IsLoading=@isLoading @ref="grid" RowSelect="@(args => OnRowSelect(args))" >
     <Columns>
+        <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Sortable="false" Filterable="false" Width="120px">
+            <Template Context="video">
+                <RadzenImage Path="@video.Thumbnail?.Medium?.Url" AlternateText="Video Thumbnail" class="rz-gravatar"/>
+            </Template>
+        </RadzenDataGridColumn>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
         <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" Width="100px" />
         <RadzenDataGridColumn TItem="Videos" Property="Published" Title="Published" Width="100px" />
