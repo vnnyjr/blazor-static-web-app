@@ -23,7 +23,7 @@
     <Columns>
         <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Sortable="false" Filterable="false" Width="120px">
             <Template Context="video">
-                <RadzenImage Path="@video.Thumbnail?.Medium?.Url" AlternateText="Video Thumbnail" class="rz-gravatar"/>
+                <RadzenImage Path="@video.Thumbnail?.Default?.Url" AlternateText="Video Thumbnail" class="rz-gravatar"/>
             </Template>
         </RadzenDataGridColumn>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
@@ -48,6 +48,7 @@
         Published: @selectedVideo.Published<br/>
         Duration: @selectedVideo.Duration<br/>
         Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a>
+        RadzenImage Path="@selectedVideo.Thumbnail?.Medium?.Url" AlternateText="Video Thumbnail" class="rz-gravatar"/>
     </div>
 }
 
