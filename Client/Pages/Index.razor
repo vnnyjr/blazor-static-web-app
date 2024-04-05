@@ -21,9 +21,9 @@
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
                 IsLoading=@isLoading @ref="grid" RowSelect="@(args => OnRowSelect(args))" >
     <Columns>
-        <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Sortable="false" Filterable="false" Width="120px">
+        <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Sortable="false" Filterable="false">
             <Template Context="video">
-                <RadzenImage Path="@video.Thumbnail?.Default?.Url" AlternateText="Video Thumbnail"/>
+                <img src="@video.Thumbnail?.Medium?.Url" alt="Video Thumbnail"/>
             </Template>
         </RadzenDataGridColumn>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
@@ -48,11 +48,12 @@
         Published: @selectedVideo.Published<br/>
         Duration: @selectedVideo.Duration<br/>
         Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a><br/>
-        <RadzenImage Path="@selectedVideo.Thumbnail?.Default?.Url" AlternateText="Video Thumbnail"/>
+        <img src="@selectedVideo.Thumbnail?.Medium?.Url" alt="Video Thumbnail"/>
+
     </div>
 }
 
-<!-- Radzen Button to fill the Data Grid code -->
+
 @code {
     private RadzenDataGrid<Videos>? grid;
     private string? searchTerm;
