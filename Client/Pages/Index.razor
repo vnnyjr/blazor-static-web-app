@@ -21,7 +21,7 @@
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
                 IsLoading=@isLoading @ref="grid" RowSelect="@(args => OnRowSelect(args))" >
     <Columns>
-        <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Sortable="false" Filterable="false">
+        <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Width="120px" Sortable="false" Filterable="false">
             <Template Context="video">
                 <img src="@video.Thumbnail?.Default?.Url" alt="Video Thumbnail"/>
             </Template>
@@ -38,17 +38,22 @@
     </Columns>
 </RadzenDataGrid>
 
+
 <!-- This section will display the details of the selected video -->
 @if (selectedVideo != null)
 {
-    <div>
-        <h3>Selected Video Details</h3>
-        Title: @selectedVideo.Title<br/>
-        Channel: @selectedVideo.Channel<br/>
-        Published: @selectedVideo.Published<br/>
-        Duration: @selectedVideo.Duration<br/>
-        Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a><br/><br/>
-        <img src="@selectedVideo.Thumbnail?.Medium?.Url" alt="Video Thumbnail"/>
+    <div style="display: flex; align-items: flex-start;">
+        <div style="flex-grow: 1; margin-right: 20px;">
+            <h3>Selected Video Details</h3>
+            Title: @selectedVideo.Title<br/>
+            Channel: @selectedVideo.Channel<br/>
+            Published: @selectedVideo.Published<br/>
+            Duration: @selectedVideo.Duration<br/>
+            Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a><br/>
+        </div>
+        <div>
+            <img src="@selectedVideo.Thumbnail?.Medium?.Url" alt="Video Thumbnail" style="max-width: 320px; height: auto;"/>
+        </div>
     </div>
 }
 
