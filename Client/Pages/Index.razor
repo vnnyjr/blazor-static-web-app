@@ -47,7 +47,9 @@
         Channel: @selectedVideo.Channel<br/>
         Published: @selectedVideo.Published<br/>
         Duration: @selectedVideo.Duration<br/>
-        Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a><br/>
+        Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a><br/><br/>
+        <img src="@selectedVideo.Thumbnail?.Medium?.Url" alt="Video Thumbnail"/><br/>
+        @selectedVideo.Thumbnail?.Medium?.Url
     </div>
 }
 
