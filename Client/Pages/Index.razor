@@ -21,7 +21,7 @@
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
                 IsLoading=@isLoading @ref="grid" RowSelect="@(args => OnRowSelect(args))" >
     <Columns>
-        <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Width="120px" Sortable="false" Filterable="false">
+        <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Width="65px" Sortable="false" Filterable="false">
             <Template Context="video">
                 <img src="@video.Thumbnail?.Default?.Url" alt="Video Thumbnail" style="max-width: 60px; max-height: 45px;"/>
             </Template>
