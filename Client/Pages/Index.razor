@@ -15,7 +15,7 @@
 <RadzenButton Text="Reset" Click="@Reset" Style="margin-top: 20px; margin-bottom: 5px;" /><RadzenButton Text="Clear Selection" Click="@ClearSelection" Style="margin-top: 20px; margin-bottom: 5px;"/>
 
 <!-- Radzen Data Grid and its Title -->
-<RadzenDataGrid Style="width: 1200px; height: 400px;"
+<RadzenDataGrid Style="width: 1200px; height: 800px;"
                 Data="@videos" TItem="Videos" Count="@videos.Count" PageSize="10"
                 AllowPaging="true" AllowSorting="true" AllowColumnResize="true" 
                 AllowColumnPicking="true" ShowPagingSummary="true" AllowFiltering="true" 
@@ -42,8 +42,8 @@
 <!-- This section will display the details of the selected video -->
 @if (selectedVideo != null)
 {
-    <div style="display: flex; justify-content: flex-start; align-items: flex-start;">
-        <div style="flex-grow: 1; margin-right: 10px;">
+    <div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-wrap: nowrap;">
+        <div style="flex-grow: 1; max-width: calc(100% - 330px); margin-right: 10px;">
             <h3>Selected Video Details</h3>
             Title: @selectedVideo.Title<br/>
             Channel: @selectedVideo.Channel<br/>
@@ -51,7 +51,7 @@
             Duration: @selectedVideo.Duration<br/>
             Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a><br/>
         </div>
-        <div>
+        <div style="flex-shrink: 0;">
             <img src="@selectedVideo.Thumbnail?.Medium?.Url" alt="Video Thumbnail" style="max-width: 320px; height: auto; margin-left: 10px;"/>
         </div>
     </div>
