@@ -23,7 +23,7 @@
     <Columns>
         <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Sortable="false" Filterable="false">
             <Template Context="video">
-                <img src="@video.Thumbnail?.Medium?.Url" alt="Video Thumbnail"/>
+                <img src="@video.Thumbnail?.Default?.Url" alt="Video Thumbnail"/>
             </Template>
         </RadzenDataGridColumn>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
@@ -48,8 +48,7 @@
         Published: @selectedVideo.Published<br/>
         Duration: @selectedVideo.Duration<br/>
         Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a><br/><br/>
-        <img src="@selectedVideo.Thumbnail?.Medium?.Url" alt="Video Thumbnail"/><br/>
-        @selectedVideo.Thumbnail?.Medium?.Url
+        <img src="@selectedVideo.Thumbnail?.Medium?.Url" alt="Video Thumbnail"/>
     </div>
 }
 
@@ -73,12 +72,6 @@
             var jsonString = await response.Content.ReadAsStringAsync();
             var result = System.Text.Json.JsonSerializer.Deserialize<List<Videos>>(jsonString);
             videos = result ?? new List<Videos>(); // In case result is null, assign an empty list
-            
-                    // Log the URLs to the console for debugging purposes
-                    foreach (var v in videos)
-                    {
-                        Console.WriteLine("Medium thumbnail URL: " + v.Thumbnail?.Medium?.Url);
-                    }
         }
         else
         {
