@@ -23,14 +23,14 @@
     <Columns>
         <RadzenDataGridColumn TItem="Videos" Property="Thumbnail" Title="Thumbnail" Width="120px" Sortable="false" Filterable="false">
             <Template Context="video">
-                <img src="@video.Thumbnail?.Default?.Url" alt="Video Thumbnail"/>
+                <img src="@video.Thumbnail?.Default?.Url" alt="Video Thumbnail" style="max-width: 60px; max-height: 45px;"/>
             </Template>
         </RadzenDataGridColumn>
         <RadzenDataGridColumn TItem="Videos" Property="Title" Title="Title" Width="300px" />
         <RadzenDataGridColumn TItem="Videos" Property="Channel" Title="Channel" Width="100px" />
         <RadzenDataGridColumn TItem="Videos" Property="Published" Title="Published" Width="100px" />
         <RadzenDataGridColumn TItem="Videos" Property="Duration" Title="Duration" Width="100px" />
-        <RadzenDataGridColumn TItem="Videos" Property="Url" Title="URL" Width="224px">
+        <RadzenDataGridColumn TItem="Videos" Property="Url" Title="URL" Width="200px">
             <Template Context="video">
                 <a href="@video.Url" target="_blank">@video.Url</a>
             </Template>
@@ -42,8 +42,8 @@
 <!-- This section will display the details of the selected video -->
 @if (selectedVideo != null)
 {
-    <div style="display: flex; align-items: flex-start;">
-        <div style="flex-grow: 1; margin-right: 20px;">
+    <div style="display: flex; justify-content: flex-start; align-items: flex-start;">
+        <div style="flex-grow: 1; margin-right: 10px;">
             <h3>Selected Video Details</h3>
             Title: @selectedVideo.Title<br/>
             Channel: @selectedVideo.Channel<br/>
@@ -52,7 +52,7 @@
             Url: <a href="@selectedVideo.Url" target="_blank">@selectedVideo.Url</a><br/>
         </div>
         <div>
-            <img src="@selectedVideo.Thumbnail?.Medium?.Url" alt="Video Thumbnail" style="max-width: 320px; height: auto;"/>
+            <img src="@selectedVideo.Thumbnail?.Medium?.Url" alt="Video Thumbnail" style="max-width: 320px; height: auto; margin-left: 10px;"/>
         </div>
     </div>
 }
