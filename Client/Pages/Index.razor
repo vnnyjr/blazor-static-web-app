@@ -1,7 +1,5 @@
 ﻿@page "/"
 @inject HttpClient Http
-@inject AuthenticationStateProvider AuthenticationStateProvider
-@inject NavigationManager NavigationManager
 <PageTitle>Index</PageTitle>
 
 
@@ -71,31 +69,20 @@
     // This method is triggered when Search button
     private async Task SearchVideos()
     {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-
-        if (user.Identity?.IsAuthenticated ?? false)
+        isLoading = true;
+        selectedVideo = null; // Clear the selected video
+        var response = await Http.GetAsync($"https://func-app-powershell001.azurewebsites.net/api/HttpTrigger3?searchterm={searchTerm}");
+        if (response.IsSuccessStatusCode)
         {
-            isLoading = true;
-            selectedVideo = null; // Clear the selected video
-            var response = await Http.GetAsync($"https://func-app-powershell001.azurewebsites.net/api/HttpTrigger3?searchterm={searchTerm}");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonString = await response.Content.ReadAsStringAsync();
-                var result = System.Text.Json.JsonSerializer.Deserialize<List<Videos>>(jsonString);
-                videos = result ?? new List<Videos>(); // In case result is null, assign an empty list
-            }
-            else
-            {
-                videos = new List<Videos>(); // Clear the list or handle the error as needed
-            }
-            isLoading = false;
+            var jsonString = await response.Content.ReadAsStringAsync();
+            var result = System.Text.Json.JsonSerializer.Deserialize<List<Videos>>(jsonString);
+            videos = result ?? new List<Videos>(); // In case result is null, assign an empty list
         }
         else
         {
-            // The user is not authenticated, redirect to Azure AD login.
-            NavigationManager.NavigateTo("/.auth/login/aad", forceLoad: true);
+            videos = new List<Videos>(); // Clear the list or handle the error as needed
         }
+        isLoading = false;
     }
 
     // This method is triggered when pressing the reset button
